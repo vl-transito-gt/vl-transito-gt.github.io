@@ -1,62 +1,121 @@
-<html lang="es"><head>
+<html lang="es">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>Maycom</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-     <script type="text/javascript">
-
-         $(document).on('keypress', '.verificador', function (e) {
-
-             var elCaracter = String.fromCharCode(e.which);
-             e = (e) ? e : window.Event
-             var charCode = (e.which) ? e.which : e.keyCode
-             var valor = parseInt(elCaracter)
-
-             if (isNaN(valor)) {
-
-                 return false;
-             }
-
-         });
-            
-               
-         
- </script>
+	
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+        }
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            width: 80%;
+            margin-bottom: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .resultado {
+            margin-top: 20px;
+            display: none;
+        }
+        .resultado img {
+            max-width: 200px;
+            border-radius: 8px;
+        }
+    </style>  
 
 </head>
 <body>
-    
-<div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
 	<img src="images/HeaderAlta.jpg" class="img-fluid" alt="Responsive image">
 </div>
 <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
 	<img src="images/upbodyAlta.jpg" class="img-fluid" alt="Responsive image">
 </div>
-<div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 col-xl-3 offset-sm-2 offset-md-4 offset-lg-4 offset-xl-4">
-  <form action="/consulta01" method="POST">
-	<br>
-    <input class="form-control TarjetaId" type="text" id="verificador" name="verificador" required="" autocomplete="off">
+<div class="container" id="quiz-box">
+    <h2>¿Cuál es la clave?</h2>
+    <p>Introduce los 8 caracteres exactos:</p>
+    
+    <input type="text" id="userInput" maxlength="8" placeholder="Escribe aquí...">
+    <br>
+    <button onclick="verificar()">Validar</button>
 
-    <center>
-	<button type="submit" class="btn btn-primary">Verificar</button>
-		<font color="#585858"><br>Check <br>Vérifier</font>
-
-	</center>
-	</form>
+    <div id="resultado" class="resultado">
+        <img id="img-feedback" src="" alt="Resultado">
+        <p id="msg-feedback"></p>
+        <button onclick="reiniciar()">Intentar de nuevo</button>
+    </div>
 </div>
-<div class="col-xs-12 col-sm-8 col-md-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
-	<img src="images/FooterAlta.jpg" class="img-fluid" alt="Responsive image">
-</div>
+
+<script>
+    // Configuración: Cambia esto por la clave que desees
+    const CLAVE_CORRECTA = "1106459"; 
+
+    function verificar() {
+        const input = document.getElementById('userInput').value;
+        const contenedorResultado = document.getElementById('resultado');
+        const imagen = document.getElementById('img-feedback');
+        const mensaje = document.getElementById('msg-feedback');
+        const inputField = document.getElementById('userInput');
+
+        // Validar si es correcto
+        if (input === CLAVE_CORRECTA) {
+            imagen.src = "https://github.com/vl-transito-gt/vl-transito-gt.github.io/blob/main/images/vl.transito.gob.gtConsultasLicenciasDouglasSanchez.jpg?raw=true"; // Imagen Verde
+            mensaje.innerText = "¡Excelente! Has acertado.";
+            mensaje.style.color = "green";
+        } else {
+            imagen.src = "https://via.placeholder.com"; // Imagen Roja
+            mensaje.innerText = "Error. Esa no es la clave.";
+            mensaje.style.color = "red";
+        }
+
+        // Mostrar resultado y ocultar input inicial
+        contenedorResultado.style.display = "block";
+        inputField.style.display = "none";
+        document.querySelector('button').style.display = "none";
+    }
+
+    function reiniciar() {
+        // Limpiar y volver al estado inicial
+        document.getElementById('userInput').value = "";
+        document.getElementById('userInput').style.display = "inline-block";
+        document.querySelector('button').style.display = "inline-block";
+        document.getElementById('resultado').style.display = "none";
+        document.getElementById('userInput').focus();
+    }      </script>
 
 
 
 
-    <script src="bundles/jquerybb75?v=1A_Qqa6eu1hIFc9O--lfxRqvbqGj9Zd6uAr93zLdrWM1"></script>
 
-    <script src="bundles/bootstrapjs8927?v=MmhSNLZaO8bPfDV5ZLzKZqBD_-cGa0iDOmZrwr63gRU1"></script>
 
 </body></html>
