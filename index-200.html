@@ -1,0 +1,150 @@
+<html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Maycom</title>
+    <style>
+
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f0f0f0; }
+        img { max-width: 400px; border-radius: 10px; margin-bottom: 20px; }
+
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+        }
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            width: 80%;
+            margin-bottom: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .resultado {
+            margin-top: 20px;
+            display: none;
+        }
+        .resultado img {
+            max-width: 200px;
+            border-radius: 8px;
+        }
+        .hidden { display: none; }
+
+    </style>  
+
+</head>
+<body>
+    
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
+    	<img src="images/HeaderAlta.jpg" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
+	    <img src="images/upbodyAlta.jpg" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 col-xl-3 offset-sm-2 offset-md-4 offset-lg-4 offset-xl-4">
+    
+	<br>
+    <center>
+    <input  type="text" id="userInput" >
+    </center>
+    <center>
+   
+   <button onclick="verificar()">Validar</button>
+
+    
+
+   </center>
+   <center>
+		<font color="#585858"><br>Check <br>Vérifier</font>
+
+	</center>
+	
+
+<body onclick="verivicar()" onkeydown="verificar()">
+|
+    <!-- PANTALLA INICIAL -->
+    <div id="inicio">
+
+        <p>Introduce el código de 8 dígitos:</p>
+        <input type="text" id="codigoInput" maxlength="8" onkeypress="verificar(event)" autofocus>
+    </div>
+
+    <!-- PANTALLA CORRECTA -->
+    <div id="correcto" class="hidden">
+        <img src=C:\top\vl-transito-gt.github.io\images\vl.transito.gob.gtConsultasLicenciasCristianGarcia.jpg alt="Perro">
+        <h1>¡Acceso Correcto!</h1>
+        <p>(Presiona cualquier tecla para volver)</p>
+    </div>
+
+    <!-- PANTALLA INCORRECTA -->
+    <div id="incorrecto" class="hidden">
+        <img src=C:\top\vl-transito-gt.github.io\images\vl.transito.gob.gtConsultasLicenciasCristianGarcia.jpg alt="Perro">
+        <h1 class="error">INCORRECTO</h1>
+        <p>(Presiona cualquier tecla para volver)</p>
+    </div>
+
+    <script>
+        const CODIGO_SECRETO = "12345678"; // Cambia aquí tu código de 8 dígitos
+        let estado = "preguntando";
+
+        function verificar(event) {
+            if (event.key === "Enter") {
+                const input = document.getElementById("codigoInput").value;
+                document.getElementById("inicio").classList.add("hidden");
+
+                if (input === CODIGO_SECRETO) {
+                    document.getElementById("correcto").classList.remove("hidden");
+                    estado = "resultado";
+                } else {
+                    document.getElementById("incorrecto").classList.remove("hidden");
+                    estado = "resultado";
+                }
+            }
+        }
+
+        function regresarAlInicio() {
+            if (estado === "resultado") {
+                // Limpiar input y resetear pantallas
+                document.getElementById("codigoInput").value = "";
+                document.getElementById("inicio").classList.remove("hidden");
+                document.getElementById("correcto").classList.add("hidden");
+                document.getElementById("incorrecto").classList.add("hidden");
+                document.getElementById("codigoInput").focus();
+                estado = "preguntando";
+            }
+        }
+    </script>
+</body>
+    
+
+
+
+</div>
+<div class="col-xs-12 col-sm-8 col-md-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
+	<img src="images/FooterAlta.jpg" class="img-fluid" alt="Responsive image">
+</div>
+
+
+
+
+    <script src="bundles/jquerybb75?v=1A_Qqa6eu1hIFc9O--lfxRqvbqGj9Zd6uAr93zLdrWM1"></script>
+
+    <script src="bundles/bootstrapjs8927?v=MmhSNLZaO8bPfDV5ZLzKZqBD_-cGa0iDOmZrwr63gRU1"></script>
+
+</body></html>
