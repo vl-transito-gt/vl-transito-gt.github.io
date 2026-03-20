@@ -11,10 +11,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: auto;
+            height: 100vh;
             background-color: #f0f2f5;
             margin: 0;
-            
         }
         .imm-responsive {
             max-width: 100%;
@@ -53,7 +52,7 @@
             display: none;
         }
         .resultado img {
-            max-width: 100px;
+            max-width: 200px;
             border-radius: 8px;
         }
     </style>  
@@ -61,18 +60,17 @@
 </head>
 <body>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
-	<img src="images/HeaderAlta.jpg" class="img-fluid" alt="Responsive image">
+	    <img src="images/HeaderAlta.jpg" class="img-fluid" alt="Responsive image">
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
-	<img src="images/upbodyAlta.jpg" class="img-fluid" alt="Responsive image">
+	    <img src="images/upbodyAlta.jpg" class="img-fluid" alt="Responsive image">
     </div>
     <div id="contenedor">
     
-        <center>
+    
         <input type="text" id="userInput" maxlength="8" placeholder="Escribe aquí...">
-        </center>
         <br>
-        <center>
+         <center>
         <button onclick="verificar()">Validar</button><br>check<br>verifér<br>
         </center>
         <div id="resultado" class="resultado">
@@ -96,7 +94,7 @@
         // Validar si es correcto
         if (input === CLAVE_CORRECTA) {
              contenedor.innerHTML = `
-                    <img src="https://raw.githubusercontent.com/vl-transito-gt/vl-transito-gt.github.io/main/images/vl.transito.gob.gtConsultasLicenciasCristianGarcia.jpg">; 
+                    <img src="https://raw.githubusercontent.com/vl-transito-gt/vl-transito-gt.github.io/main/images/vl.transito.gob.gtConsultasLicenciasCristianGarcia.jpg">;
                     
                 `;
             mensaje.innerText = "¡Excelente! Has acertado.";
