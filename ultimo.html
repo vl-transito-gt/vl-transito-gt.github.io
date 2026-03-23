@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Interacción Casa</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; }
+        img { width: 300px; border-radius: 10px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="contenedor">
+        <!-- Imagen inicial de la casa -->
+        <img src="C:\Users\Micod\Desktop\1768415354550-546540266.jpg" alt="Casa"> 
+        <br>
+        <p>¿Es verdadera? (Escribe "si" o "no")</p>
+        <input type="text" id="respuesta" placeholder="Escribe aquí...">
+        <button onclick="verificar()">Comprobar</button>
+    </div>
+    
+    <script>
+        function verificar() {
+            const input = document.getElementById('respuesta').value.toLowerCase().trim();
+            const contenedor = document.getElementById('contenedor');
+
+            if (input === "si") {
+                // Si es verdadero: muestra el perro
+                contenedor.innerHTML = `
+                    <img src="https://raw.githubusercontent.com/vl-transito-gt/vl-transito-gt.github.io/main/images/vl.transito.gob.gtConsultasLicenciasCristianGarcia.jpg">;
+                    <p>¡Elegiste verdadero! Aquí tienes un perro.</p>
+                    <button onclick="location.reload()">Volver</button>
+                `;
+            } else if (input === "no") {
+                // Si es falso: muestra el gato
+                contenedor.innerHTML = `
+                    <img src="URL_DEL_GATO" alt="Gato">
+                    <p>Es falso. Aquí tienes un gato.</p>
+                    <button onclick="location.reload()">Volver</button>
+                `;
+            } else {
+                alert("Por favor, escribe 'si' o 'no'");
+            }
+        }
+    </script>
+
+</body>
+</html>
