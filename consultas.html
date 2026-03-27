@@ -60,14 +60,14 @@
         input {
             padding: 10px;
             font-size: 1rem;
-            width: 80%;
+            width: 100%;
             margin-bottom: 1rem;
-            border: 2px solid #ddd;
+            border: 1px solid #ddd;
             border-radius: 5px;
             text-align: left;
         }
         button {
-            padding: 10px 20px;
+            padding: 10px 60px;
             background-color: #007bff;
             color: white;
             border: none;
@@ -104,9 +104,9 @@
     
     
     <center>
-    <input type="text" id="userInput" maxlength="8" placeholder="Escribe aquí...">
+    <input type="text" id="userInput" maxlength="8">
     <br>
-    <button onclick="verificar()">Validar</button><br>check<br>verifér<br>
+    <button onclick="verificar()">Verificar</button><br><br>Controlar<br><br>Verificador<br>
     </center>
  
         
@@ -136,13 +136,17 @@
 
 
     <script>
-        const CLAVE_CORRECTA = "1106459"; 
+        const CLAVE_CORRECTA_P = "01106459"; 
+        
         // Configuración: Cambia esto por la clave que desees
         function verificar() {
             const input = document.getElementById('userInput').value;
             const contenedor = document.getElementById('contenedor');
+            let clave  = parseInt(input);
+            let CLAVE_CORRECTA = parseInt(CLAVE_CORRECTA_P);
 
-            if (input === CLAVE_CORRECTA) {
+
+            if (clave === CLAVE_CORRECTA) {
                 // Si es verdadero: muestra el perro
                 
                 
