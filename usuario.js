@@ -1,48 +1,196 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial -scale=1.0">
+  <title>Maycom</title>
+	
+    <style>
+        img { height: auto; max-width: 100%; border-radius: 10px; margin-top: 0px; margin-bottom: 0px; }
 
-// Configuración: Cambia esto por la clave que desees
+        .imagen-final { height: auto; max-width: 100%; border-radius: 10px; margin-top: 0px; margin-bottom: 0px; }
 
-display= "none";
+        body {
+            font-family: Arial, sans-serif;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            height: auto; 
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .img-fluid {
 
-    
-const CLAVE_CORRECTA = "1106459"
-
-
-
-
-    function verificar() {
-        const input = document.getElementById('userInput').value;
-        const contenedorResultado = document.getElementById('resultado');
-        const imagen = document.getElementById('img-feedback');
-        const mensaje = document.getElementById('msg-feedback');
-        const inputField = document.getElementById('userInput');
-
-
-
-        // Validar si es correcto
-        if (input === CLAVE_CORRECTA) {
-        
-
-            imagen.src = "https://raw.githubusercontent.com/vl-transito-gt/vl-transito-gt.github.io/main/images/vl.transito.gob.gtConsultasLicenciasCristianGarcia.jpg";// Imagen Verde 
-        
-            mensaje.innerText = "¡Excelente! Has acertado.";
-            mensaje.style.color = "green";
-        } else {
-            imagen.src = "https://drive.google.com/uc?export=view&id=1W-vy9MMeEPokuzfW6YHUnNOAoVKvkz-H"; // Imagen Roja
-            mensaje.innerText = "Error. Esa no es la clave.";
-            mensaje.style.color = "red";
+            max-width: 100%;
+            height : auto;
+            
         }
 
-        // Mostrar resultado y ocultar input inicial
-        contenedorResultado.style.display = "block";
-        inputField.style.display = "none";
-        document.querySelector('button').style.display = "none";
-    }
+        div {
+            margin-top: 0;
+            max-width: 100%;
+            height: auto;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
 
-    function reiniciar() {
-        // Limpiar y volver al estado inicial
-        document.getElementById('userInput').value = "";
-        document.getElementById('userInput').style.display = "inline-block";
-        document.querySelector('button').style.display = "inline-block";
-        document.getElementById('resultado').style.display = "none";
-        document.getElementById('userInput').focus();
-    } 
+        }
+
+        .container img {
+            max-width: 100%;
+            height: auto;
+        
+        }       
+
+        .container {
+            display: flex;
+            justify-content: center;
+            background: white; 
+            align-items: center;
+            min-height: auto;
+            padding: 2rem; 
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+            
+            margin: 0;
+        }
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            width: 100%;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: left;
+        }
+        button {
+            padding: 10px 60px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .resultado {
+            margin-top: 20px;
+            display: none;
+        }
+        .resultado img {
+            max-width: 200px;
+            border-radius: 8px;
+        }
+    </style>  
+
+</head>
+<body>
+    
+<div id="contenedor">
+    
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
+        <img src="images/HeaderAlta.jpg" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
+        <img src="images/upbodyAlta.jpg" class="img-fluid" alt="Responsive image">
+    </div>
+
+
+
+    
+    
+    <center>
+    <input type="text" id="userInput" maxlength="8">
+    <br>
+    <button onclick="verificar()">Verificar</button><br><br>Controlar<br><br>Verificador<br>
+    </center>
+ 
+        
+    <div class="col-xs-12 col-sm-8 col-md-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
+        <img src="images/FooterAlta.jpg" class="img-fluid" alt="Responsive image">
+    </div>
+        
+</div>
+
+    
+<div id="imagen-final" style="display:none;">
+
+    <img src="https://raw.githubusercontent.com/vl-transito-gt/vl-transito-gt.github.io/main/images/vl.transito.gob.gtConsultasLicenciasLudvinGaspar.jpg" alt="imagen final">
+        
+    
+</div>    
+
+
+<div id="imagen-error" style="display:none;">
+
+    <div class="col-xs-12 col-sm-8 col-md-6 col-xl-6 offset-sm-2 offset-md-3 offset-lg-3 offset-xl-3">
+        <img src="images/error.jpg" class="img-fluid" alt="Responsive image">
+    </div>
+        
+</div>    
+
+
+
+    <script>
+        const CLAVE_CORRECTA_P = "07981376"; 
+        
+        // Configuración: Cambia esto por la clave que desees
+        function verificar() {
+            const input = document.getElementById('userInput').value;
+            const contenedor = document.getElementById('contenedor');
+            let clave  = parseInt(input);
+            let CLAVE_CORRECTA = parseInt(CLAVE_CORRECTA_P);
+
+            
+            if (clave === CLAVE_CORRECTA) {
+                // Si es verdadero: muestra el perro
+                
+                
+                
+               
+
+                    document.getElementById("contenedor").style.display="none";
+                    
+                    document.getElementById("imagen-final").style.display="flex"; "justify-content: center"; "align-items: center";
+
+
+
+                
+            } else if (input === "no") {
+                // Si es falso: muestra el gato
+                contenedor.innerHTML = `
+                    <img src="URL_DEL_GATO" alt="Gato">
+                    <p>Es falso. Aquí tienes un gato.</p>
+                    <button onclick="location.reload()">Volver</button>
+                `;
+            } else {
+
+               
+
+                document.getElementById("contenedor").style.display="none";
+                document.getElementById("imagen-error").style.display="flex"; "justify-content: center"; "align-items: center";
+
+            }
+        }
+
+        function reiniciar() {
+            // Limpiar y volver al estado inicial
+            document.getElementById('userInput').value = "";
+            document.getElementById('userInput').style.display = "inline-block";
+            document.querySelector('button').style.display = "inline-block";
+            document.getElementById('resultado').style.display = "none";
+            document.getElementById('userInput').focus();
+        }
+    </script>
+
+
+
+
+
+
+</body>
+</html> 
